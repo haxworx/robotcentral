@@ -1,1 +1,1 @@
-composer require odan/twig-assets twig/twig
+composer require twig/twig
