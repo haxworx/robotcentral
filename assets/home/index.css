@@ -3,6 +3,26 @@ body {
   font-size: 8pt;
 }
 
+.menu ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   background-color: #007fd9;
+   overflow: hidden;
+}
+
+.menu li {
+   float: left;
+}
+
+.menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
 .content {
   width: 80%;
   padding-top: 10%;
