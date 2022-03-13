@@ -71,17 +71,7 @@ function main()
 		return;
 	}
 
-	if (!valid_time($time)) {
-		http_response_code(500);
-		return;
-	}
-
-	if (!valid_agent($agent)) {
-		http_response_code(500);
-		return;
-	}
-
-	if (!valid_domain($domain)) {
+	if ((!valid_time($time)) || (!valid_agent($agent)) || (!valid_domain($domain))) {
 		http_response_code(500);
 		return;
 	}
@@ -98,6 +88,12 @@ function main()
 			$weekday = $_POST['weekly'];
 			print "$weekday\n";
 		}
+	}
+
+	try {
+		$db = new DB();
+	} catch (Exception $e) {
+
 	}
 }
 

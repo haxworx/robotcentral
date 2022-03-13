@@ -1,5 +1,6 @@
 <?php
 
+require_once 'common.php';
 require_once 'Config.php';
 
 class DB
@@ -8,7 +9,7 @@ class DB
 
 	public function __construct($options = [])
 	{
-		$config = new Config('config.ini');
+		$config = new Config(project_root_directory() . '/' . 'config.ini');
 		$db_host = $config->settings['database']['host'];
 		$db_name = $config->settings['database']['name'];
 		$db_user = $config->settings['database']['user'];
