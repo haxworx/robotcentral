@@ -34,6 +34,16 @@ table.crawlers {
   padding-right: 10px;
 }
 
+th {
+  padding-right: 80px;
+}
+
+tr:nth-child(odd) {
+}
+
+tr:nth-child(even) {
+}
+
 .create_input, .create_label, .create_submit {
   display: block;
   width: 100%;

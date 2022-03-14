@@ -118,9 +118,11 @@ try {
 		return;
 	}
 
-	$SQL = "INSERT IGNORE INTO tbl_crawl_launch (domain, start_time, agent, weekly, daily, weekday) VALUES (?, ?, ?, ?, ?, ?)";
+	# MD5 sum of our data.
+	$extid = md5($domain . $start_time . $agent . $weekly . $daily . $weekday);
+	$SQL = "INSERT IGNORE INTO tbl_crawl_launch (extid, domain, start_time, agent, weekly, daily, weekday) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	$stmt = $db->pdo->prepare($SQL);
-	$stmt->execute([$domain, $start_time, $agent, $weekly, $daily, $weekday]);
+	$stmt->execute([$extid, $domain, $start_time, $agent, $weekly, $daily, $weekday]);
 } catch (Exception $e) {
 	error_log(__FILE__ . ':' .  __LINE__ . ':' . $e->getMessage());
 	http_response_code(500);

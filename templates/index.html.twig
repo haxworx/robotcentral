@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<table class="crawlers"><thead class="crawlers"><tr><th>domain</th><th>launch</th><th>frequency</th></tr></thead>
+<table class="crawlers"><thead class="crawlers"><tr><th>domain</th><th>launch</th><th>frequency</th><th>actions</th></tr></thead>
 {% for robot in robots %}
 <tr><td>{{robot.domain}}</td><td>{{robot.start_time}}</td>
 {% if robot.weekday == null %}
@@ -10,6 +10,7 @@
 {% else %}
 <td>{{ robot.weekday }}</td>
 {% endif %}
+<td><a href="/delete/?extid={{robot.extid}}">delete?</a></td>
 </tr>
 {% endfor %}
 </table>
