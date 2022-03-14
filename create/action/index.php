@@ -120,6 +120,7 @@ try {
 	$stmt = $db->pdo->prepare($SQL);
 	$stmt->execute([$domain, $start_time, $agent, $weekly, $daily, $weekday]);
 } catch (Exception $e) {
+	error_log(__FILE__ . ':' .  __LINE__ . ':' . $e->getMessage());
 	http_response_code(500);
 	return;
 }
