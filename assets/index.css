@@ -3,7 +3,7 @@ body {
   font-size: 8pt;
 }
 
-.menu ul {
+ul.menu {
    list-style-type: none;
    margin: 0;
    padding: 0;
@@ -11,15 +11,15 @@ body {
    overflow: hidden;
 }
 
-.menu li {
-   float: left;
+li.menu {
+  float: left;
+  padding: 14px 16px;
 }
 
-.menu li a {
+li.menu, a.menu {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
 }
 
@@ -27,6 +27,11 @@ body {
   width: 90%;
   padding-top: 10px;
   padding-left: 10px;
+}
+
+table.crawlers {
+  text-align: left;
+  padding-right: 10px;
 }
 
 .create_input, .create_label, .create_submit {

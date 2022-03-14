@@ -2,9 +2,15 @@
 
 {% block content %}
 
-<table><th>Domain</th><th>Launch</th></tr></td>
+<table class="crawlers"><thead class="crawlers"><tr><th>domain</th><th>launch</th><th>frequency</th></tr></thead>
 {% for robot in robots %}
-<tr><td>{{robot.domain}}</td><td>{{robot.start_time}}</td></tr>
+<tr><td>{{robot.domain}}</td><td>{{robot.start_time}}</td>
+{% if robot.weekday == null %}
+<td>daily</td>
+{% else %}
+<td>{{ robot.weekday }}</td>
+{% endif %}
+</tr>
 {% endfor %}
 </table>
 
