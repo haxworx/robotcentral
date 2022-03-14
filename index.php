@@ -2,20 +2,25 @@
 
 require_once 'src/Database.php';
 require_once 'src/Twig.php';
-require_once 'src/Robot.php';
 
+$robots = [];
 
 try {
 	$db = new DB;
-} catch (Exception $e) {
-	
-}
+	$SQL = "SELECT domain, start_time FROM tbl_crawl_launch";
+	$stmt = $db->pdo->prepare($SQL);
+	$stmt->execute();
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		$robots[] = ['domain' => $row['domain'], 'start_time' => $row['start_time']];
+	}
 
-$controller = new RobotController($db);
-$activeRobots = $controller->getActive();
+} catch (Exception $e) {
+	http_response_code(500);
+	return;
+}
 
 $template = $twig->load('index.html.twig');
 
-echo $template->render(['activeRobots' => $activeRobots ]);
+echo $template->render(['robots' => $robots ]);
 
 ?>

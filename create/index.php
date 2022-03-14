@@ -1,5 +1,6 @@
 <?php
 
+require_once '../src/common.php';
 require_once 'src/Twig.php';
 
 $weekly = false;

@@ -1,5 +1,12 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-	<h1>Hello {{ name }}</h1>
+
+<table><th>Domain</th><th>Launch</th></tr></td>
+{% for robot in robots %}
+<tr><td>{{robot.domain}}</td><td>{{robot.start_time}}</td></tr>
+{% endfor %}
+</table>
+
+
 {% endblock %}

@@ -24,10 +24,9 @@ body {
 }
 
 .content {
-  width: 80%;
-  padding-top: 10%;
-  padding-left: 10%;
-  padding-right: 10%;
+  width: 90%;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .create_input, .create_label, .create_submit {
