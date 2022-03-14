@@ -28,7 +28,7 @@ function valid_domain($domain)
 
 function valid_agent($agent)
 {
-	if (preg_match('/^[A-Za-z0-9\._\/]+$/', $agent)) {
+	if (preg_match('/^[A-Za-z0-9\._\/]+\/\d+\.\d+$/', $agent)) {
 		return true;
 	}
 
@@ -52,7 +52,8 @@ $weekly = 0;
 
 foreach ($allowed as $param) {
 	if (!isset($_POST[$param]) || empty($_POST[$param])) {
-		http_response_code(500);
+		# Empty but valid field redirect to self.
+		header("Location: /create");
 		return;
 	}
 
@@ -73,8 +74,30 @@ if (!in_array($frequency, $frequency_allowed)) {
 	return;
 }
 
-if ((!valid_time($start_time)) || (!valid_agent($agent)) || (!valid_domain($domain))) {
+try {
+	$template = $twig->load('errors.html.twig');
+} catch (Exception $e) {
+	error_log(__FILE__ . ':' .  __LINE__ . ':' . $e->getMessage());
 	http_response_code(500);
+	return;
+}
+
+$input_error = false;
+
+if (!valid_time($start_time)) {
+	$input_error = "Invalid time specified";
+}
+
+if (!valid_agent($agent)) {
+	$input_error = "Invalid user-agent specified.";
+}
+
+if (!valid_domain($domain)) {
+	$input_error = "Invalid domain specified.";
+}
+
+if ($input_error !== false) {
+	echo $template->render(['message' => $input_error, 'source_url' => '/create/']);
 	return;
 }
 
@@ -97,7 +120,6 @@ if ($frequency === "daily") {
 try {
 	$config = new Config();
 	$max_robots = $config->settings['main']['max_crawlers'];
-	$template = $twig->load('errors.html.twig');
 
 	$db = new DB();
 
