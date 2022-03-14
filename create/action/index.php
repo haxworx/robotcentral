@@ -20,7 +20,7 @@ require_once 'src/Twig.php';
 
 function valid_domain($domain)
 {
-	if (preg_match('/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/', $domain)) {
+	if (preg_match('/^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\.(xn--)?([a-z0-9\-]{1,61}|[a-z0-9-]{1,30}\.[a-z]{2,})$/', strtolower($domain))) {
 		return true;
 	}
 	return false;
