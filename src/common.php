@@ -13,4 +13,14 @@ function project_root_directory()
 	return $path;
 }
 
+function project_config_path()
+{
+	static $path = null;
+
+	if ($path === null) {
+		$path = realpath(__DIR__ . '/../config.ini');
+	}
+	return $path;
+}
+
 ?>

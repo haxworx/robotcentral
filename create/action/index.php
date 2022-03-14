@@ -94,6 +94,8 @@ if ($frequency === "daily") {
 }
 
 try {
+	$config = new Config();
+	$max_robots = $config->settings['main']['max_crawlers'];
 	$template = $twig->load('errors.html.twig');
 
 	$db = new DB();
@@ -102,7 +104,7 @@ try {
 	$stmt = $db->pdo->prepare($SQL);
 	$stmt->execute();
 	$res = $stmt->fetch(PDO::FETCH_ASSOC);
-	if ($res['count'] >= 5) {
+	if ($res['count'] >= $max_robots) {
 		echo $template->render(['message' => 'Reached maximum robots allowed.']);
 		return;
 	}
