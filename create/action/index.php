@@ -66,6 +66,7 @@ $domain      = $_POST['domain'];
 $agent       = $_POST['agent'];
 $start_time  = $_POST['time'];
 $frequency   = $_POST['frequency'];
+$weekday     = null;
 
 if (!in_array($frequency, $frequency_allowed)) {
 	http_response_code(500);
