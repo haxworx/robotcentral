@@ -1,7 +1,7 @@
 <?php
 
-require_once 'src/Database.php';
-require_once 'src/Twig.php';
+require_once 'lib/Database.php';
+require_once 'lib/Twig.php';
 
 $robots = [];
 

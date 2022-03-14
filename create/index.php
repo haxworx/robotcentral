@@ -1,7 +1,7 @@
 <?php
 
-require_once '../src/common.php';
-require_once 'src/Twig.php';
+require_once '../lib/common.php';
+require_once 'lib/Twig.php';
 
 $weekly = false;
 

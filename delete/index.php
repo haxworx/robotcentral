@@ -1,7 +1,7 @@
 <?php
 
-require '../src/common.php';
-require_once 'src/Database.php';
+require '../lib/common.php';
+require_once 'lib/Database.php';
 
 # DELETE a job from the tbl_crawl_launch table.
 

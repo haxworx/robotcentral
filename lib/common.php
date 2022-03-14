@@ -23,4 +23,11 @@ function project_config_path()
 	return $path;
 }
 
+function project_debugging_mode()
+{
+   $config = new Config;
+
+   return (bool) $config->settings['main']['debug'];
+}
+
 ?>
